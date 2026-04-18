@@ -63,7 +63,7 @@ addLayer("d", {
         12: {
             name: "玻璃大炮",
             challengeDescription() {
-                return "进入领域时你只有 100 HP，且无法再获得更多。<br>完成次数：" +
+                return "进入领域时你只有 100 生命，且无法再获得更多。<br>完成次数：" +
                     formatWhole(player.d.challenges[this.id]) + "/" + layers.d.challenges[this.id].completionLimit();
             },
             goal() {

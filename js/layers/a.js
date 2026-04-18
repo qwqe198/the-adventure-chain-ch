@@ -115,7 +115,7 @@ addLayer("a", {
         ["display-text", function () { return "攻击：" + format(layers.a.getEnemyATK()) }],
         ["display-text", function () { if (player.a.level.gte(20)) return "防御：" + format(layers.a.getEnemyDEF()) }],
         ["display-text", function () { if (player.a.level.gte(4960)) return "伤害倍率：" + format(layers.a.getEnemyDMG()) + "x" }],
-        ["display-text", function () { return "经验（EXP）：" + format(layers.a.getEnemyEXP()) }],
+        ["display-text", function () { return "经验：" + format(layers.a.getEnemyEXP()) }],
         ["display-text", function () { if (player.b.points.gte(16)) return "金币：" + format(layers.a.getEnemyGold()) }],
         ["display-text", function () { if (!player.b.unlocked) return "达到等级 10 以解锁 B 层" }],
         ["row", [["clickable", "11"], ["clickable", "12"]]],
