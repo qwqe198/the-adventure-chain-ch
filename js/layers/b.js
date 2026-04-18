@@ -140,7 +140,7 @@ addLayer("b", {
             requirementDescription: "击败 2 个首领",
             unlocked() { return player[this.layer].points.gte(1) },
             done() { return player[this.layer].points.gte(2) },
-            effectDescription: "从敌人处获得更多经验值，并在 A 层解锁连击攻击。",
+            effectDescription: "从敌人处获得更多经验，并在 A 层解锁连击攻击。",
         },
         {
             requirementDescription: "击败 3 个首领",

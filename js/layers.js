@@ -39,19 +39,19 @@ addLayer("sac", {
             requirementDescription: "献祭 1 次",
             unlocked() { return player[this.layer].points.gte(0); },
             done() { return player[this.layer].points.gte(1); },
-            effectDescription: "提高等级上限与经验值获取，但增加升级所需经验。降低 F 层 1 阶机器的成本。你可以在不退出领域的情况下完成领域挑战。对首领造成 10 倍伤害。"
+            effectDescription: "提高等级上限与经验获取，但增加升级所需经验。降低 F 层 1 阶机器的成本。你可以在不退出领域的情况下完成领域挑战。对首领造成 10 倍伤害。"
         },
         {
             requirementDescription: "献祭 2 次",
             unlocked() { return player[this.layer].points.gte(1); },
             done() { return player[this.layer].points.gte(2); },
-            effectDescription: "提高等级上限与经验值获取，但增加升级所需经验。降低 F 层 1 阶机器的成本。对首领造成 100 倍伤害。"
+            effectDescription: "提高等级上限与经验获取，但增加升级所需经验。降低 F 层 1 阶机器的成本。对首领造成 100 倍伤害。"
         },
         {
             requirementDescription: "献祭 3 次",
             unlocked() { return player[this.layer].points.gte(2); },
             done() { return player[this.layer].points.gte(3); },
-            effectDescription: "提高等级上限与经验值获取，但增加升级所需经验。当等级 > 1000 时降低敌人防御。降低 F 层 1 阶机器的成本。在献祭开始时解锁全部 8 种装备类型与全部 4 个领域。承受来自首领的伤害降低至 0.1 倍。"
+            effectDescription: "提高等级上限与经验获取，但增加升级所需经验。当等级 > 1000 时降低敌人防御。降低 F 层 1 阶机器的成本。在献祭开始时解锁全部 8 种装备类型与全部 4 个领域。承受来自首领的伤害降低至 0.1 倍。"
         },
     ],
 

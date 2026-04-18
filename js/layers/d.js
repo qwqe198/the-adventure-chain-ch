@@ -20,10 +20,10 @@ addLayer("d", {
 
     // ===== UI 布局 =====
     tabFormat: {
-        "主界面": {
+        "main": {
             content: [
                 "main-display",
-                ["display-text", "进入领域将强制进行一次平静重置。领域内的经验值被动获取会被削弱。"],
+                ["display-text", "进入领域将强制进行一次平静重置。领域内的经验被动获取会被削弱。"],
                 "challenges"
             ]
         }

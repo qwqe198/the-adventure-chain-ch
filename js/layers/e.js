@@ -31,7 +31,7 @@ addLayer("e", {
 
     // ===== UI 布局 =====
     tabFormat: {
-        "主界面": {
+        "main": {
             content: [
                 "main-display",
                 ["display-text", "冒险中的敌人现在会掉落装备。"],
@@ -182,7 +182,7 @@ addLayer("e", {
             display() {
                 return `等级：${formatWhole(player[this.layer].equipment[this.id].level)}<br>` +
                        `强度：${formatWhole(player[this.layer].equipment[this.id].power.mul(100))}%<br>` +
-                       `效果：经验值获取 ×${format(layers[this.layer].equipmentEff(this.id))}`;
+                       `效果：经验获取 ×${format(layers[this.layer].equipmentEff(this.id))}`;
             },
             canClick: false,
             style: { "background-color": "#6699FF" },

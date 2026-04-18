@@ -35,7 +35,7 @@ addLayer("c", {
 
     // ===== UI 布局 =====
     tabFormat: {
-        "主界面": {
+        "main": {
             content: [
                 "main-display",
                 "prestige-button",
@@ -44,7 +44,7 @@ addLayer("c", {
                 "milestones"
             ]
         },
-        "可购买项": {
+        "buy": {
             content: [
                 "main-display",
                 "prestige-button",
@@ -84,7 +84,7 @@ addLayer("c", {
     },
     effectDescription() {
         let eff = this.effect();
-        return "转化为经验值获取量的 " + format(eff) + " 倍乘数";
+        return "转化为经验获取量的 " + format(eff) + " 倍乘数";
     },
 
     // ===== 里程碑 =====
@@ -92,12 +92,12 @@ addLayer("c", {
         {
             requirementDescription: "1 平静点数",
             done() { return player.c.points.gte(1) },
-            effectDescription: "从敌人处获得更多经验值。",
+            effectDescription: "从敌人处获得更多经验。",
         },
         {
             requirementDescription: "5 平静点数",
             done() { return player.c.points.gte(5) },
-            effectDescription: "根据等级被动获得经验值。",
+            effectDescription: "根据等级被动获得经验。",
         },
         {
             requirementDescription: "20 平静点数",
@@ -137,25 +137,25 @@ addLayer("c", {
             requirementDescription() { if (player.sac.points.gte(2)) return "1e8 平静点数"; return "1e16 平静点数"; },
             done() { return (player.c.points.gte(1e16) && player.sac.points.gte(1)) || (player.c.points.gte(1e8) && player.sac.points.gte(2)); },
             unlocked() { return player.sac.points.gte(1) },
-            effectDescription: "废料效果增强经验值获取。",
+            effectDescription: "废料效果增强经验获取。",
         },
         {
             requirementDescription() { if (player.sac.points.gte(2)) return "1e11 平静点数"; return "1e18 平静点数"; },
             done() { return (player.c.points.gte(1e18) && player.sac.points.gte(1)) || (player.c.points.gte(1e11) && player.sac.points.gte(2)); },
             unlocked() { return player.sac.points.gte(1) },
-            effectDescription: "从敌人处获得更多经验值。",
+            effectDescription: "从敌人处获得更多经验。",
         },
         {
             requirementDescription() { if (player.sac.points.gte(2)) return "1e14 平静点数"; return "1e20 平静点数"; },
             done() { return (player.c.points.gte(1e20) && player.sac.points.gte(1)) || (player.c.points.gte(1e14) && player.sac.points.gte(2)); },
             unlocked() { return player.sac.points.gte(1) },
-            effectDescription: "从敌人处获得更多经验值。",
+            effectDescription: "从敌人处获得更多经验。",
         },
         {
             requirementDescription() { if (player.sac.points.gte(3)) return "1e17 平静点数"; return "1e18 平静点数"; },
             done() { return (player.c.points.gte(1e18) && player.sac.points.gte(2)) || (player.c.points.gte(1e17) && player.sac.points.gte(3)); },
             unlocked() { return player.sac.points.gte(2) },
-            effectDescription: "从敌人处获得更多经验值。",
+            effectDescription: "从敌人处获得更多经验。",
         },
         {
             requirementDescription() { if (player.sac.points.gte(3)) return "1e20 平静点数"; return "1e21 平静点数"; },
@@ -420,11 +420,11 @@ addLayer("c", {
             unlocked() { return hasUpgrade("c", 12) }
         },
         23: {
-            title() { return "经验值获取"; },
+            title() { return "经验获取"; },
             display() {
                 let data = tmp[this.layer].buyables[this.id];
                 return "等级：" + format(player[this.layer].buyables[this.id]) + "<br>" +
-                    "经验值获取 ×" + format(data.effect) + "<br>" +
+                    "经验获取 ×" + format(data.effect) + "<br>" +
                     "下一级消耗：" + format(data.cost) + " 平静点数";
             },
             cost() {

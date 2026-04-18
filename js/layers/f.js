@@ -23,7 +23,7 @@ addLayer("f", {
 
     // ===== UI 布局 =====
     tabFormat: {
-        "主界面": {
+        "main": {
             content: [
                 "main-display",
                 ["display-text", function () { return "工厂、铸造厂与锻造炉。你可以使用装备碎片购买机器并生产废料。" }],

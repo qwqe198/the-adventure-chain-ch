@@ -32,14 +32,14 @@ addLayer("g", {
 
     // ===== UI 布局 =====
     tabFormat: {
-        "主界面": {
+        "main": {
             content: [
                 "main-display",
                 "upgrades",
                 "milestones"
             ]
         },
-        "装备商店": {
+        "stop": {
             content: [
                 "main-display",
                 ["display-text", function () {
