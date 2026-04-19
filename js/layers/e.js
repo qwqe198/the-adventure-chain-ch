@@ -237,7 +237,7 @@ addLayer("e", {
             display() {
                 return `等级：${formatWhole(player[this.layer].equipment[this.id].level)}<br>` +
                        `强度：${formatWhole(player[this.layer].equipment[this.id].power.mul(100))}%<br>` +
-                       `效果：HP 获取 ×${format(layers[this.layer].equipmentEff(this.id))}`;
+                       `效果：生命 获取 ×${format(layers[this.layer].equipmentEff(this.id))}`;
             },
             canClick: false,
             style: { "background-color": "#6699FF" },

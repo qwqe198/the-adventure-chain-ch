@@ -102,7 +102,7 @@ addLayer("c", {
         {
             requirementDescription: "20 平静点数",
             done() { return player.c.points.gte(20) },
-            effectDescription: "HP、攻击和防御均 ×1.1。",
+            effectDescription: "生命、攻击和防御均 ×1.1。",
         },
         {
             requirementDescription: "100 平静点数",

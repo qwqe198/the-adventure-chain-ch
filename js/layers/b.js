@@ -236,7 +236,7 @@ addLayer("b", {
             requirementDescription: "击败 18 个首领",
             unlocked() { return player[this.layer].points.gte(17) },
             done() { return player[this.layer].points.gte(18) },
-            effectDescription: "解锁一种新装备。HP 获取量 ×1.25。",
+            effectDescription: "解锁一种新装备。生命 获取量 ×1.25。",
         },
         {
             requirementDescription: "击败 19 个首领",

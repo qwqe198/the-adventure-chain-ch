@@ -47,7 +47,12 @@ addLayer("d", {
             goalDescription() { return "达到等级 " + formatWhole(this.goal().ceil()); },
             currencyDisplayName: "等级",
             canComplete() { return getLevel().gte(this.goal()); },
-            onEnter() { doReset("c", true); },
+            onEnter() { doReset("c", true);player.d.points = new Decimal(
+                    player.d.challenges[11] +
+                    player.d.challenges[12] +
+                    player.d.challenges[21] +
+                    player.d.challenges[22]); 
+},  
             onExit() {
                 player.d.points = new Decimal(
                     player.d.challenges[11] +
@@ -78,10 +83,13 @@ addLayer("d", {
             canComplete() { return getLevel().gte(this.goal()); },
             completionLimit() { return layers.d.completionLimit(); },
             rewardDescription: "每次完成获得 1 领域点数。",
-            onEnter() {
-                doReset("c", true);
-                player.points = new Decimal(100);
-            },
+            onEnter() { doReset("c", true);player.d.points = new Decimal(
+                    player.d.challenges[11] +
+                    player.d.challenges[12] +
+                    player.d.challenges[21] +
+                    player.d.challenges[22]); 
+player.points=new Decimal(100)
+},  
             onExit() {
                 player.d.points = new Decimal(
                     player.d.challenges[11] +
@@ -112,7 +120,12 @@ addLayer("d", {
             canComplete() { return getLevel().gte(this.goal()); },
             completionLimit() { return layers.d.completionLimit(); },
             rewardDescription: "每次完成获得 1 领域点数。",
-            onEnter() { doReset("c", true); },
+            onEnter() { doReset("c", true);player.d.points = new Decimal(
+                    player.d.challenges[11] +
+                    player.d.challenges[12] +
+                    player.d.challenges[21] +
+                    player.d.challenges[22]); 
+},  
             onExit() {
                 player.d.points = new Decimal(
                     player.d.challenges[11] +
@@ -142,7 +155,13 @@ addLayer("d", {
             canComplete() { return getLevel().gte(this.goal()); },
             completionLimit() { return layers.d.completionLimit(); },
             rewardDescription: "每次完成获得 1 领域点数。",
-            onEnter() { doReset("c", true); },
+            onEnter() { doReset("c", true);
+                player.d.points = new Decimal(
+                    player.d.challenges[11] +
+                    player.d.challenges[12] +
+                    player.d.challenges[21] +
+                    player.d.challenges[22]);
+ },
             onExit() {
                 player.d.points = new Decimal(
                     player.d.challenges[11] +
