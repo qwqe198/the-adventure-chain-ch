@@ -13,6 +13,7 @@ let modInfo = {
         "layers/f.js",
         "layers/g.js",
         "layers/h.js",
+  "layers/i.js",
         "tree.js"
     ],
 
@@ -23,11 +24,13 @@ let modInfo = {
 }
 
 let VERSION = {
-    num: "8.2",
-    name: "辅助版本",
+    num: "9.0",
+    name: "幻想版本",
 }
 
 let changelog = `<h1>更新日志：</h1><br>
+<h3>v9.0</h3><br>
+        - 新增I层<br>
 <h3>v8.2</h3><br>
         - 汉化游戏，修复领域点数不能获得的bug。<br>
     <h3>v8.0</h3><br>
@@ -89,7 +92,7 @@ function addedPlayerData() {
 
 // 在页面顶部显示额外信息
 var displayThings = [
-    "残局：击败26首领且等级达到100000",
+    "残局：击败28首领且等级达到400000",
     function () { return "等级：" + formatWhole(getLevel()) + " / " + formatWhole(getLevelCap()) + "（" + format(getLevelProgress().mul(100)) + "%）" },
     function () { return "攻击：" + format(getATK()) },
     function () { if (player.b.points.gte(1)) return "防御：" + format(getDEF()) },
@@ -163,13 +166,13 @@ function getLevel() {
 }
 
 function getLevelCap() {
-    if (player.sac.points.gte(3)) return new Decimal(100000)
-    if (player.sac.points.gte(2)) return new Decimal(64000)
-    if (player.sac.points.gte(1)) return new Decimal(16000)
-    if (player.b.points.gte(10)) return new Decimal(4000)
-    if (player.b.points.gte(8)) return new Decimal(3000)
-    if (hasMilestone("c", 3)) return new Decimal(2000)
-    return new Decimal(1000)
+    if (player.sac.points.gte(3)) return new Decimal(100000).add(player.i.points.pow(2).mul(10).min(400000));
+    if (player.sac.points.gte(2)) return new Decimal(64000);
+    if (player.sac.points.gte(1)) return new Decimal(16000);
+    if (player.b.points.gte(10)) return new Decimal(4000);
+    if (player.b.points.gte(8)) return new Decimal(3000);
+    if (hasMilestone("c", 3)) return new Decimal(2000);
+    return new Decimal(1000);
 }
 
 function getLevelProgress() {
@@ -192,10 +195,10 @@ function getRealLevel() {
     let scaling = getLevelScaling()
 
     if (player.sac.points.gte(3)) {
-        let level = player.a.points.pow(0.075).div(16).div(scaling.sqrt()).add(1).log(1.0625).mul(scaling.sqrt()).pow(2).add(1)
-        if (player.a.points.pow(0.15).lte(scaling)) level = player.a.points.pow(0.15).add(1)
-        level = level.min(100000)
-        return level
+        let level = player.a.points.pow(0.075).div(16).div(scaling.sqrt()).add(1).log(1.0625).mul(scaling.sqrt()).pow(2).add(1);
+        if (player.a.points.pow(0.15).lte(scaling)) level = player.a.points.pow(0.15).add(1);
+        if (level.gte(100000))level = level.root(5).mul(10000).min(getLevelCap());
+        return level;
     }
 
     if (player.sac.points.gte(2)) {

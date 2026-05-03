@@ -181,6 +181,7 @@ player.points=new Decimal(100)
         if (player.sac.points.gte(2)) d += 5;
         if (hasUpgrade("c", 32)) d += 10;
         if (hasUpgrade("g", 15)) d += 5;
+        if (hasMilestone("i", 4)) d += 5;
         return d;
     },
 
@@ -213,6 +214,20 @@ player.points=new Decimal(100)
     effectDescription() {
         let eff = this.effect();
         let eff2 = this.effect2();
-        return "转化为平静点数获取的 " + format(eff) + " 倍乘数，以及首领伤害的 " + format(eff2) + " 倍乘数";
+        return "translated to a " + format(eff) + "x multiplier to Calm Point gain and " + format(eff2) + "x multiplier to Boss Damage";
+    },
+
+    doReset(layer) { 
+        if (layer == "i") {
+            layerDataReset("d",["challenges"]);
+            keepAmount = 0;
+            if(hasMilestone("i",1) || player.i.points.gte(2))keepAmount = 0.25 + 0.15 * player.i.points.cbrt().min(5).toNumber();
+         player.d.challenges[11] = Math.floor(player.d.challenges[11]*keepAmount);
+         player.d.challenges[12] = Math.floor(player.d.challenges[12]*keepAmount);
+         player.d.challenges[21] = Math.floor(player.d.challenges[21]*keepAmount);
+         player.d.challenges[22] = Math.floor(player.d.challenges[22]*keepAmount);
+
+            updateTemp();
+        }
     },
 })

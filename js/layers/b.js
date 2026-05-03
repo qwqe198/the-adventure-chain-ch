@@ -280,9 +280,25 @@ addLayer("b", {
             done() { return player[this.layer].points.gte(25) },
             effectDescription: "解锁一个新的辅助者和金币升级。",
         },
+      {
+    requirementDescription: "击败 26 个 首领",
+    unlocked() { return player[this.layer].points.gte(25) },
+    done() { return player[this.layer].points.gte(26) },
+    effectDescription: "解锁 I 层。",
+},
+{
+    requirementDescription: "击败 27 个 首领",
+    unlocked() { return player[this.layer].points.gte(26) },
+    done() { return player[this.layer].points.gte(27) },
+    effectDescription: "根据已击败的 首领 数量提升幻想点数获取。",
+},
+{
+    requirementDescription: "击败 28 个 首领",
+    unlocked() { return player[this.layer].points.gte(27) },
+    done() { return player[this.layer].points.gte(28) },
+    effectDescription: "解锁锻造。",
+},
     ],
-
-    // ===== 更新逻辑 =====
     update(diff) {
         if (getLevel().gte(10)) player.b.unlocked = true;
         if (player.b.y.lte(0)) {
@@ -297,6 +313,7 @@ addLayer("b", {
         if (hasUpgrade("c", 13)) ret = ret.mul(upgradeEffect("c", 13));
         if (hasUpgrade("g", 21)) ret = ret.mul(upgradeEffect("g", 21));
         ret = ret.mul(layers.d.effect2());
+        ret = ret.mul(layers.i.effect());
         if (player.sac.points.gte(1)) ret = ret.mul(10);
         if (player.sac.points.gte(2)) ret = ret.mul(100);
         return ret;

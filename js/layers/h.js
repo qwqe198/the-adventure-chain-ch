@@ -22,7 +22,9 @@ addLayer("h", {
 
     // ===== 辅助者点数获取倍率 =====
     gainMult() {
-        return new Decimal(1);
+		let ret=new Decimal(1);
+if(player.i.points.gte(4) || hasMilestone("i",3)) ret = ret.mul(3);
+        return ret;
     },
 
     // ===== 可购买项 =====
@@ -178,4 +180,11 @@ addLayer("h", {
             }
         },
     ],
+    doReset(layer) { 
+        if (layer == "i") {
+            if(player.i.points.gte(4) || hasMilestone("i",3))layerDataReset("h",["points","buyables","upgrades"]);
+              else layerDataReset("h",["points","upgrades"]);
+            updateTemp();
+        }
+    },
 });

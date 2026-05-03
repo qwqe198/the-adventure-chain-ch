@@ -36,6 +36,8 @@ addLayer("e", {
                 "main-display",
                 ["display-text", "冒险中的敌人现在会掉落装备。"],
                 ["display-text", "卸下装备时会将其转换为装备碎片。"],
+  ["display-text", "下面是等级/经验/被动/平静宝石。"],
+["display-text", "武器/护甲/头盔/鞋子。"],
                 "clickables"
             ]
         }
@@ -70,8 +72,8 @@ addLayer("e", {
 
     // ===== 敌人掉落装备 =====
     drop(level) {
-        if (level === undefined) return "哈哈";
-        player.e.drop = "敌人掉落：";
+        if (level === undefined) return "haha";
+        player.e.drop = "Enemy drop:";
         let types = layers.e.types();
         let count = 1;
         if (player.b.points.gte(11)) count++;
@@ -82,7 +84,7 @@ addLayer("e", {
             let power = layers.e.effect().add(layers.e.effect2());
             let gain = layers.e.gainMult(level.mul(power)).mul(count ** 1.1).mul(1.1);
             player.e.points = player.e.points.add(gain);
-            player.e.drop += format(gain) + " 个装备碎片";
+            player.e.drop += format(gain) + " Equipment Shards";
             return player.e.drop;
         }
 
@@ -91,8 +93,8 @@ addLayer("e", {
             let type = types[Math.floor(types.length * Math.random())];
             let power = layers.e.effect().mul(Math.random()).add(layers.e.effect2());
 
-            if (i > 0) player.e.drop += "；";
-            player.e.drop += layers.e.clickables[type].title + " 等级 " + formatWhole(level) + "，强度：" + formatWhole(power.mul(100)) + "%";
+            if (i > 0) player.e.drop += ":";
+            player.e.drop += layers.e.clickables[type].title + " Lv " + formatWhole(level) + ",Power:" + formatWhole(power.mul(100)) + "%";
             layers.e.equip(type, level, power);
         }
         return player.e.drop;
@@ -168,7 +170,7 @@ addLayer("e", {
     // ===== 点击按钮（装备展示）=====
     clickables: {
         11: {
-            title: "等级宝石",
+            title: "Level Gem",
             display() {
                 return `等级：${formatWhole(player[this.layer].equipment[this.id].level)}<br>` +
                        `强度：${formatWhole(player[this.layer].equipment[this.id].power.mul(100))}%<br>` +
@@ -178,7 +180,7 @@ addLayer("e", {
             style: { "background-color": "#6699FF" }
         },
         12: {
-            title: "经验宝石",
+            title: "EXP Gem",
             display() {
                 return `等级：${formatWhole(player[this.layer].equipment[this.id].level)}<br>` +
                        `强度：${formatWhole(player[this.layer].equipment[this.id].power.mul(100))}%<br>` +
@@ -189,7 +191,7 @@ addLayer("e", {
             unlocked() { return hasUpgrade("c", 15) || player.sac.points.gte(3); }
         },
         13: {
-            title: "被动宝石",
+            title: "Passive Gem",
             display() {
                 return `等级：${formatWhole(player[this.layer].equipment[this.id].level)}<br>` +
                        `强度：${formatWhole(player[this.layer].equipment[this.id].power.mul(100))}%<br>` +
@@ -200,7 +202,7 @@ addLayer("e", {
             unlocked() { return player.b.points.gte(9); }
         },
         14: {
-            title: "平静宝石",
+            title: "Calm Gem",
             display() {
                 return `等级：${formatWhole(player[this.layer].equipment[this.id].level)}<br>` +
                        `强度：${formatWhole(player[this.layer].equipment[this.id].power.mul(100))}%<br>` +
@@ -211,7 +213,7 @@ addLayer("e", {
             unlocked() { return hasUpgrade("c", 22) || player.sac.points.gte(3); }
         },
         21: {
-            title: "武器",
+            title: "Weapon",
             display() {
                 return `等级：${formatWhole(player[this.layer].equipment[this.id].level)}<br>` +
                        `强度：${formatWhole(player[this.layer].equipment[this.id].power.mul(100))}%<br>` +
@@ -222,7 +224,7 @@ addLayer("e", {
             unlocked() { return player.b.points.gte(15); }
         },
         22: {
-            title: "护甲",
+            title: "Armor",
             display() {
                 return `等级：${formatWhole(player[this.layer].equipment[this.id].level)}<br>` +
                        `强度：${formatWhole(player[this.layer].equipment[this.id].power.mul(100))}%<br>` +
@@ -233,7 +235,7 @@ addLayer("e", {
             unlocked() { return player.b.points.gte(15); }
         },
         23: {
-            title: "头盔",
+            title: "Helmet",
             display() {
                 return `等级：${formatWhole(player[this.layer].equipment[this.id].level)}<br>` +
                        `强度：${formatWhole(player[this.layer].equipment[this.id].power.mul(100))}%<br>` +
@@ -244,7 +246,7 @@ addLayer("e", {
             unlocked() { return player.b.points.gte(18); }
         },
         24: {
-            title: "鞋子",
+            title: "Shoes",
             display() {
                 return `等级：${formatWhole(player[this.layer].equipment[this.id].level)}<br>` +
                        `强度：${formatWhole(player[this.layer].equipment[this.id].power.mul(100))}%<br>` +
@@ -254,5 +256,12 @@ addLayer("e", {
             style: { "background-color": "#6699FF" },
             unlocked() { return player.b.points.gte(19); }
         },
+    },
+    doReset(layer) { 
+        if (layer == "i") {
+            layerDataReset("e");
+            if(player.i.points.gte(3) || hasMilestone("i",2))player.e.equipment[13].level=new Decimal(10000),player.e.equipment[13].power=new Decimal(10);
+            updateTemp();
+        }
     },
 })

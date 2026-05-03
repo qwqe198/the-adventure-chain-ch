@@ -98,6 +98,7 @@ addLayer("a", {
         exp = exp.mul(buyableEffect("c", 23));
         exp = exp.mul(layers.e.equipmentEff(12));
         if (hasMilestone("c", 8)) exp = exp.mul(layers.f.effect());
+        exp = exp.mul(layers.i.effect());
         return exp;
     },
 
@@ -263,6 +264,10 @@ addLayer("a", {
             player.a.points = new Decimal(0);
             player.a.nextEnemyTime = new Decimal(2);
             player.a.hp = layers.a.getEnemyHP();
+            updateTemp();
+        }
+        if (layer == "i") {
+            layerDataReset("a");
             updateTemp();
         }
     },
