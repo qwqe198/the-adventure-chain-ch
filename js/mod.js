@@ -92,7 +92,7 @@ function addedPlayerData() {
 
 // 在页面顶部显示额外信息
 var displayThings = [
-    "残局：击败28首领且等级达到400000",
+    "残局：击败28首领且等级达到110000",
     function () { return "等级：" + formatWhole(getLevel()) + " / " + formatWhole(getLevelCap()) + "（" + format(getLevelProgress().mul(100)) + "%）" },
     function () { return "攻击：" + format(getATK()) },
     function () { if (player.b.points.gte(1)) return "防御：" + format(getDEF()) },
@@ -102,7 +102,7 @@ var displayThings = [
 
 // 判断游戏是否“结束”
 function isEndgame() {
-    return player.b.points.gte(26) && getLevel().gte(100000)
+    return player.b.points.gte(28) && getLevel().gte(110000)
 }
 
 // 背景样式（可以是函数）
