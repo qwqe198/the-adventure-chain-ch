@@ -122,10 +122,10 @@ addLayer("i", {
                     ["bar", "hp"]
                 ]],
                 "blank",
-                ["display-text", "伤害倍率同样作用于对无限Boss的伤害。"],
-                ["display-text", "对无限Boss的伤害倍率具有时间因子，攻击时重置。"],
-                ["display-text", function(){return "对无限Boss造成的总伤害："+format(Decimal.pow(2,Decimal.sub(1024,player.i.y)).sub(1))}],
-                ["display-text", function(){return "对无限Boss造成的总伤害会增强幻想点数的效果，并使幻想点数获取提升至 "+format(layers.i.infEff())+" 倍。"}],
+                ["display-text", "伤害倍率同样作用于对无限首领的伤害。"],
+                ["display-text", "对无限首领的伤害倍率具有时间因子，攻击时重置。"],
+                ["display-text", function(){return "对无限首领造成的总伤害："+format(Decimal.pow(2,Decimal.sub(1024,player.i.y)).sub(1))}],
+                ["display-text", function(){return "对无限首领造成的总伤害会增强幻想点数的效果，并使幻想点数获取提升至 "+format(layers.i.infEff())+" 倍。"}],
                 ["row", [["clickable", "11"]]],
             ],
             unlocked: function () { return hasMilestone("i", 6) }
